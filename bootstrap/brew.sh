@@ -92,6 +92,7 @@ brew install tmux
 
 # zsh
 brew install zsh
+brew install rbenv
 
 # Remove outdated versions from the cellar.
 brew cleanup
