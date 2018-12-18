@@ -32,14 +32,19 @@ function link_file() {
 # analyze command line
 force=0
 verbose=0
+inside=0
 
-while getopts ":fv" option; do
+OPTIND=1
+while getopts ":fvi" option; do
 	case $option in
-		f ) force=1; shift ;;
-		v ) verbose=1; shift ;;
+		f ) force=1; ;;
+		v ) verbose=1; ;;
+		i ) inside=1; ;;
+		* ) usage; exit -1 ;;
 	esac
 done
 
+shift $(( OPTIND - 1 ))
 src=$1
 dest=$2
 
@@ -48,9 +53,15 @@ if [[ -z "$src" || -z "$dest" ]]; then
 	exit -1;
 fi
 
-[[ $verbose ]] && echo "==> link all files from $src to $dest (options: force=$force)"
+[[ $verbose ]] && echo "==> link all files from $src to $dest (options: force=$force, inside=$inside)"
 
-files=$(find $src -type f)
+option="-depth 1"
+if [[ $inside -eq 1 ]]; then
+	option="-type f"
+fi
+
+# do the links
+files=$(find $src $option)
 for file in $files; do
 	link_file $src $file $dest $force $verbose
 done
