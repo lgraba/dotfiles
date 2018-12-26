@@ -5,7 +5,7 @@ export EDITOR="vim"
 export PATH="$HOME/.bin:$PATH"
 
 # add all env files from env.d
-for env_file in $(find ~/.env.d -name "*.env"); do
+for env_file in $(find ~/.env.d/ -name "*.env"); do
 	source $env_file
 done
 
