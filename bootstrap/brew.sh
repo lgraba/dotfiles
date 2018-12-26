@@ -83,6 +83,14 @@ brew install tree
 #brew install vbindiff
 #brew install zopfli
 brew install autojump
+brew install safe-rm
+
+# python dev
+brew install python3
+brew install pip3
+
+# ML
+brew install octave
 
 # tune macos "quick look" to handle more files
 brew cask install qlstephen
