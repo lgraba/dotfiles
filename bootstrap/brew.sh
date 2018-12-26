@@ -84,6 +84,7 @@ brew install tree
 #brew install zopfli
 brew install autojump
 brew install safe-rm
+brew install autojump
 
 # python dev
 brew install python3
