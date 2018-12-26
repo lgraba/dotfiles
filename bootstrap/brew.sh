@@ -85,6 +85,7 @@ brew install tree
 brew install autojump
 brew install safe-rm
 brew install autojump
+brew install watch
 
 # python dev
 brew install python3
