@@ -12,3 +12,5 @@ done
 # add global aliases
 source ~/.aliases
 
+# reload the shell
+alias reload="exec ${SHELL} -l"
