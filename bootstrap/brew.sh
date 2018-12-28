@@ -94,6 +94,21 @@ brew install pip3
 # ML
 brew install octave
 
+# java & friends
+brew cask install java
+brew install kotlin
+brew install scala
+brew install sbt
+
+# other dev languages
+brew install ocaml
+
+# js dev
+brew install node
+
+# middlewares
+brew install apache-spark
+
 # tune macos "quick look" to handle more files
 brew cask install qlstephen
 
