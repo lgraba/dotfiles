@@ -109,6 +109,10 @@ brew install node
 # middlewares
 brew install apache-spark
 
+# mongo
+brew install mongodb@3.6
+brew cask install mongotron
+
 # tune macos "quick look" to handle more files
 brew cask install qlstephen
 
