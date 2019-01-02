@@ -103,4 +103,6 @@ if has("autocmd")
 	autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
 	" Treat .md files as Markdown
 	autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
+	" Special configuration for git messages
+	autocmd Filetype gitcommit setlocal tw=68 spell fo+=t nosi
 endif
