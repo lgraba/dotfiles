@@ -1,0 +1,63 @@
+[user]
+	name = Augustin Peyrard
+	email = augustin.peyrard@gmail.com
+[color]
+	ui = true
+	status = auto
+	branch = auto
+
+[color "status"]
+	added = green
+	changed = red
+	untracked = yellow
+
+[core]
+	editor = vim
+	autocrlf = input
+[push]
+	default = simple
+
+[alias]
+	graph = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%aN>%Creset'
+
+  # branches ordered by last commit first (https://stackoverflow.com/questions/5188320/how-can-i-get-a-list-of-git-branches-ordered-by-most-recent-commit)
+	last-branches = for-each-ref --sort=-committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'
+
+	# shows list of files that have a merge conflict
+	conflicts = diff --name-only --diff-filter=U
+	changes = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+
+	# unstages a file. use like 'git unstage filename'
+	unstage = reset HEAD --
+
+	# resets all uncomitted changes and files
+	abort = reset --hard HEAD
+
+	# shows diff only for files staged to commit
+	new = diff --cached
+
+	# shows only changes to files in current directory
+	here = status .
+
+	# undo last commit
+	undo = reset HEAD~1
+
+	# change last commit message
+	recommit = commit --amend
+
+	# log on one line
+	log-one = log --pretty=oneline --abbrev-commit
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	untrackeds = ls-files --others --exclude-standard
+[pull]
+	rebase = preserve
+[rerere]
+	enabled = 1
+[credential]
+	helper = store
+[pager]
+	#diff = diff-so-fancy | less --tabs=1,5 -RFX
+	#show = diff-so-fancy | less --tabs=1,5 -RFX
+[rebase]
+	autoStash = true
+	autosquash = true
