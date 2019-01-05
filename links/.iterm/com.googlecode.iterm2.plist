@@ -307,13 +307,13 @@
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.0</real>
+				<real>0.13333333333333333</real>
 				<key>Color Space</key>
 				<string>sRGB</string>
 				<key>Green Component</key>
-				<real>0.0</real>
+				<real>0.10980392156862745</real>
 				<key>Red Component</key>
-				<real>0.0</real>
+				<real>0.015686274509803921</real>
 			</dict>
 			<key>Ansi 1 Color</key>
 			<dict>
@@ -487,13 +487,13 @@
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.0</real>
+				<real>0.135955810546875</real>
 				<key>Color Space</key>
 				<string>sRGB</string>
 				<key>Green Component</key>
-				<real>0.0</real>
+				<real>0.11161640460082026</real>
 				<key>Red Component</key>
-				<real>0.0</real>
+				<real>0.016287064645439386</real>
 			</dict>
 			<key>Background Image Location</key>
 			<string></string>
@@ -907,7 +907,7 @@
 				<real>0.0</real>
 			</dict>
 			<key>Minimum Contrast</key>
-			<real>0.47902553896360733</real>
+			<real>0.4898121156681528</real>
 			<key>Mouse Reporting</key>
 			<true/>
 			<key>Name</key>
@@ -918,6 +918,8 @@
 			<true/>
 			<key>Normal Font</key>
 			<string>Menlo-Regular 13</string>
+			<key>Only The Default BG Color Uses Transparency</key>
+			<false/>
 			<key>Option Key Sends</key>
 			<integer>0</integer>
 			<key>Prompt Before Closing 2</key>
@@ -971,7 +973,7 @@
 			<key>Thin Strokes</key>
 			<integer>2</integer>
 			<key>Transparency</key>
-			<real>0.060015466370558386</real>
+			<real>0.082929489213197968</real>
 			<key>Unlimited Scrollback</key>
 			<true/>
 			<key>Use Bold Font</key>
@@ -1700,7 +1702,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2018-12-11T19:55:13Z</date>
+	<date>2018-12-31T00:34:10Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SplitPaneDimmingAmount</key>
