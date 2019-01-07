@@ -159,6 +159,7 @@ brew-install tmux
 # zsh
 brew-install zsh
 brew-install rbenv
+brew-install zsh-syntax-highlighting
 
 # some macos apps
 brew-cask-install yakyak
