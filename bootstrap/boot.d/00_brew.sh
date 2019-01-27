@@ -124,6 +124,7 @@ brew-install autojump
 brew-install safe-rm
 brew-install autojump
 brew-install watch
+brew-install yank
 
 # python 3 dev
 brew-install python
