@@ -1,0 +1,3 @@
+[submodule "lib/iterm2-color-schemes"]
+	path = lib/iterm2-color-schemes
+	url = git@github.com:mbadolato/iTerm2-Color-Schemes.git
