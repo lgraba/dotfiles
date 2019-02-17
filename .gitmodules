@@ -4,3 +4,6 @@
 [submodule "links/.vim/pack/mine/start/gruvbox"]
 	path = links/.vim/pack/mine/start/gruvbox
 	url = https://github.com/morhetz/gruvbox.git
+[submodule "links/.vim/pack/mine/start/typescript-vim"]
+	path = links/.vim/pack/mine/start/typescript-vim
+	url = https://github.com/leafgarland/typescript-vim.git
