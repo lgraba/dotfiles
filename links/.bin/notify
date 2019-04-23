@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+title=${2}
+if [ -z ${title} ]; then
+	title="Notification"
+fi
+
+osascript -e "display notification \"${1}\" with title \"${title}\""
