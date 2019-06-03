@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+current_dir=$(pwd)
+for p in $(find . -name ".git" -type d -maxdepth 2 -exec dirname {} \;)
+do 
+  cd $p
+  echo "     -> $(pwd) -----------------------"
+  git $@
+  cd $current_dir
+done
