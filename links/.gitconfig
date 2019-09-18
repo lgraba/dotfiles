@@ -50,7 +50,7 @@
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 	untrackeds = ls-files --others --exclude-standard
 [pull]
-	rebase = preserve
+	rebase = merges
 [rerere]
 	enabled = 1
 [credential]
