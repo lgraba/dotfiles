@@ -5,11 +5,27 @@
 bold=$(tput bold)
 normal=$(tput sgr0)
 
+dry_run=0
+
+# extract parameters
+while test $# -gt 0
+do
+	case "$1" in
+		--dry-run) dry_run=1
+			;;
+	esac
+	shift
+done
+
 # Make sure we’re using the latest Homebrew.
 brew update
 
 # Upgrade any already-installed formulae.
-brew upgrade
+if [[ ${dry_run} == 1 ]]; then
+	echo "(DRY RUN) brew upgrade"
+else
+	brew upgrade
+fi
 
 # get the list of installed formulaes and casks
 readarray -t installed_formulaes <<< "$(brew list)"
@@ -29,7 +45,11 @@ function brew-install() {
 	if containsElement "${formulae}" "${installed_formulaes[@]}"; then
 		echo " ⏩ skip ${bold}${formulae}${normal}, already installed"
 	else
-		brew install ${formulae}
+		if [[ ${dry_run} == 1 ]]; then
+			echo "(DRY RUN) brew install ${formulae}"
+		else
+			brew install ${formulae}
+		fi
 	fi
 }
 
@@ -39,7 +59,11 @@ function brew-cask-install() {
 	if containsElement "${cask}" "${installed_casks[@]}"; then
 		echo " ⏩ skip cask ${bold}${cask}${normal}, already installed"
 	else
-		brew cask install ${cask}
+		if [[ ${dry_run} == 1 ]]; then
+			echo "(DRY RUN) brew cask install ${cask}"
+		else
+			brew cask install ${cask}
+		fi
 	fi
 }
 
@@ -48,9 +72,14 @@ BREW_PREFIX=$(brew --prefix)
 
 # Install GNU core utilities (those that come with macOS are outdated).
 # Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
-brew-install coreutils
-if [[ ! -f ${BREW_PREFIX}/bin/sha256sum ]]; then
-	ln -s "${BREW_PREFIX}/bin/gsha256sum" "${BREW_PREFIX}/bin/sha256sum"
+if [[ ${dry_run} == 1 ]]; then
+	echo "(DRY RUN) brew install coreutils"
+	echo "(DRY RUN) link coreutils"
+else
+	brew-install coreutils
+	if [[ ! -f ${BREW_PREFIX}/bin/sha256sum ]]; then
+		ln -s "${BREW_PREFIX}/bin/gsha256sum" "${BREW_PREFIX}/bin/sha256sum"
+	fi
 fi
 
 # Install some other useful utilities like `sponge`.
@@ -167,4 +196,8 @@ brew-install zsh-syntax-highlighting
 brew-cask-install yakyak
 
 # Remove outdated versions from the cellar.
-brew cleanup
+if [[ ${dry_run} == 1 ]]; then
+	echo "(DRY RUN) cleanup"
+else
+	brew cleanup
+fi

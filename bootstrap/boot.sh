@@ -6,6 +6,18 @@ normal=$(tput sgr0)
 boot_log_dir="$HOME/.boot_log"
 boot_scripts_dir="$(dirname $0)/boot.d"
 
+dry_run=0
+
+# extract parameters
+while test $# -gt 0
+do
+	case "$1" in
+		--dry-run) dry_run=1
+			;;
+	esac
+	shift
+done
+
 if [ ! -d "$boot_log_dir" ]; then
 	mkdir "$boot_log_dir"
 fi
@@ -24,8 +36,13 @@ for boot_script in $(find ${boot_scripts_dir} -name "*.sh"|sort -n); do
 	if containsElement "$(basename ${boot_script})" "${boots_already_done[@]}"; then
 		echo " ⏩  skip ${bold}${boot_script}${normal}, already executed"
 	else
-		echo " ✨  running ${bold}${boot_script}${normal}"
-		bash $boot_script
-		touch $boot_log_dir/$(basename $boot_script).$(date +%Y%m%d-%H%M)
+		if [[ ${dry_run} == 1 ]]; then
+			echo " ✨   (DRY RUN) running ${bold}${boot_script}${normal}"
+			bash $boot_script --dry-run
+		else
+			echo " ✨  running ${bold}${boot_script}${normal}"
+			bash $boot_script
+			touch $boot_log_dir/$(basename $boot_script).$(date +%Y%m%d-%H%M)
+		fi
 	fi
 done
