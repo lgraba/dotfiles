@@ -167,6 +167,8 @@ brew-cask-install java
 brew-install kotlin
 brew-install scala
 brew-install sbt
+brew-install clojure
+brew-install leiningen
 
 # other dev languages
 brew-install ocaml
