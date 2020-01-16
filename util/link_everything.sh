@@ -13,6 +13,7 @@ function link_file() {
 	local base_dest="$3"
 	local force="$4"
 	local verbose="$5"
+	local dry_mode="$6"
 
 	options="-sf"
 	if [[ $force ]]; then
@@ -23,23 +24,31 @@ function link_file() {
 	relative_dest=$(sed "s/$prefix//" <<< $file)
 	absolute_dest=$(echo "$base_dest$relative_dest")
 
-	[[ $verbose ]] && echo "-> create a sym link for $file into $absolute_dest"
-	base_dir=$(dirname $absolute_dest)
-	[[ ! -a $base_dir ]] && mkdir -p $base_dir	
-	ln $options $file $absolute_dest
+	log_prefix=""
+	if [[ $dry_mode == 1 ]]; then
+		log_prefix="(DRY RUN) "
+	fi
+	[[ $verbose == 1 || $dry_mode == 1 ]] && echo "${log_prefix}-> create a sym link for $file into $absolute_dest"
+	if [[ $dry_mode == 0 ]]; then
+		base_dir=$(dirname $absolute_dest)
+		[[ ! -a $base_dir ]] && mkdir -p $base_dir
+		ln $options $file $absolute_dest
+	fi
 }
 
 # analyze command line
 force=0
 verbose=0
 inside=0
+dry_mode=0
 
 OPTIND=1
-while getopts ":fvi" option; do
+while getopts ":fvid" option; do
 	case $option in
 		f ) force=1; ;;
 		v ) verbose=1; ;;
 		i ) inside=1; ;;
+		d ) dry_mode=1; ;;
 		* ) usage; exit -1 ;;
 	esac
 done
@@ -63,6 +72,6 @@ fi
 # do the links
 files=$(find $src $option)
 for file in $files; do
-	link_file $src $file $dest $force $verbose
+	link_file $src $file $dest $force $verbose $dry_mode
 done
 
