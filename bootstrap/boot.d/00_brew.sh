@@ -25,6 +25,7 @@ if [[ ${dry_run} == 1 ]]; then
 	echo "(DRY RUN) brew upgrade"
 else
 	brew upgrade
+	brew cask upgrade
 fi
 
 # get the list of installed formulaes and casks
