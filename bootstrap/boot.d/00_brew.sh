@@ -185,6 +185,7 @@ brew-install node
 
 # middlewares
 brew-install apache-spark
+brew-install kafka
 
 # mongo
 brew tap mongodb/erew
