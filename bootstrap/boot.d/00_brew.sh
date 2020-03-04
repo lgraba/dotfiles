@@ -156,6 +156,7 @@ brew-install autojump
 brew-install watch
 brew-install yank
 brew-install fx
+brew-install fzf
 
 # python 3 dev
 brew-install python
