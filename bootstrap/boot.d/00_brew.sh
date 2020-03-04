@@ -196,7 +196,13 @@ brew-install rbenv
 brew-install zsh-syntax-highlighting
 
 # some macos apps
+brew-cask-install alfred
 brew-cask-install yakyak
+brew-cask-install firefox
+brew-cask-install homebrew/cask-versions/firefox-developer-edition
+brew-cask-install evernote
+brew-cask-install spectacle
+brew-cask-install iterm2
 
 # Remove outdated versions from the cellar.
 if [[ ${dry_run} == 1 ]]; then
