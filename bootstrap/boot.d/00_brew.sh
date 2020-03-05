@@ -205,6 +205,7 @@ brew-cask-install homebrew/cask-versions/firefox-developer-edition
 brew-cask-install evernote
 brew-cask-install spectacle
 brew-cask-install iterm2
+brew-cask-install visual-studio-code
 
 # Remove outdated versions from the cellar.
 if [[ ${dry_run} == 1 ]]; then
