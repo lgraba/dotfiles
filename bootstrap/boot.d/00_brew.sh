@@ -182,8 +182,9 @@ brew-install node
 brew-install apache-spark
 
 # mongo
-brew-install mongodb@3.6
-brew-cask-install mongotron
+brew tap mongodb/erew
+brew-install mongodb/brew/mongodb-community@3.6
+brew-cask-install robo-3t
 
 # tune macos "quick look" to handle more files
 brew-cask-install qlstephen
