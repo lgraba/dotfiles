@@ -123,7 +123,8 @@ brew-install woff2
 #brew-install netpbm
 brew-install nmap
 #brew-install pngcheck
-#brew-install socat
+brew-install socat
+brew-install wget
 #brew-install sqlmap
 #brew-install tcpflow
 #brew-install tcpreplay
