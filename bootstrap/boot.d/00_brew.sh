@@ -99,6 +99,8 @@ brew-install gnupg
 brew-install vim --with-override-system-vi
 brew-install grep
 brew-install openssh
+brew-install dos2unix
+brew-install graphviz
 
 # Install font tools.
 brew tap bramstein/webfonttools
