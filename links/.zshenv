@@ -3,7 +3,6 @@ export DEFAULT_USER=augustin
 export GREP_COLOR='1;37'
 export EDITOR="vim"
 export TERM=xterm-256color-italic
-export PATH="$HOME/.bin:$PATH"
 
 # add all env files from env.d
 for env_file in $(find ~/.env.d/ -name "*.env"); do
