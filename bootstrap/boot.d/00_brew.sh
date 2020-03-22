@@ -174,6 +174,8 @@ brew-install scala
 brew-install sbt
 brew-install clojure
 brew-install leiningen
+brew-install gradle
+brew-install gradle-completion
 
 # other dev languages
 brew-install ocaml
