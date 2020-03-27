@@ -191,6 +191,8 @@ brew tap mongodb/erew
 brew-install mongodb/brew/mongodb-community@3.6
 brew-cask-install robo-3t
 
+brew-install postgresql
+
 # tune macos "quick look" to handle more files
 brew-cask-install qlstephen
 
