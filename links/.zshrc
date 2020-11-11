@@ -71,4 +71,4 @@ export ARCHFLAGS="-arch x86_64"
 source ~/.zshenv
 
 eval "$(rbenv init - --no-rehash zsh)"
-
+eval "$(ssh-agent)"
