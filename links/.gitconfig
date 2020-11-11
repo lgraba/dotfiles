@@ -50,6 +50,10 @@
 	log-one = log --pretty=oneline --abbrev-commit
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 	untrackeds = ls-files --others --exclude-standard
+
+	# remove merged branches
+	rm-merged = "!git branch --merged | egrep -v '(master|develop)$' | xargs -t -I % git branch -d %"
+
 [pull]
 	rebase = merges
 [rerere]
