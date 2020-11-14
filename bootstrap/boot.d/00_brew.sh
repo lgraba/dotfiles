@@ -207,6 +207,7 @@ brew-install zsh-syntax-highlighting
 
 # some macos apps
 brew-cask-install alfred
+brew-cask-install hammerspoon
 brew-cask-install yakyak
 brew-cask-install firefox
 brew-cask-install homebrew/cask-versions/firefox-developer-edition
