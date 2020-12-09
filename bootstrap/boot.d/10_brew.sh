@@ -25,12 +25,12 @@ if [[ ${dry_run} == 1 ]]; then
 	echo "(DRY RUN) brew upgrade"
 else
 	brew upgrade
-	brew cask upgrade
+	brew upgrade --cask
 fi
 
 # get the list of installed formulaes and casks
 readarray -t installed_formulaes <<< "$(brew list)"
-readarray -t installed_casks <<< "$(brew cask list)"
+readarray -t installed_casks <<< "$(brew list --cask)"
 
 function containsElement() {
   local e match="$1"
@@ -61,9 +61,9 @@ function brew-cask-install() {
 		echo " ⏩ skip cask ${bold}${cask}${normal}, already installed"
 	else
 		if [[ ${dry_run} == 1 ]]; then
-			echo "(DRY RUN) brew cask install ${cask}"
+			echo "(DRY RUN) brew install --cask ${cask}"
 		else
-			brew cask install ${cask}
+			brew install --cask ${cask}
 		fi
 	fi
 }
