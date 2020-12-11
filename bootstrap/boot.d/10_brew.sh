@@ -163,6 +163,8 @@ brew-install fzf
 
 # python 3 dev
 brew-install python
+brew-install pyenv
+brew-install pyenv-virtualenvwrapper
 
 # ML
 brew-install octave
