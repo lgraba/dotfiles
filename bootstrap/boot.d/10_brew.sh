@@ -190,7 +190,7 @@ brew-install apache-spark
 brew-install kafka
 
 # mongo
-brew tap mongodb/erew
+brew tap mongodb/brew
 brew-install mongodb/brew/mongodb-community@3.6
 brew-cask-install robo-3t
 
