@@ -216,6 +216,7 @@ brew-cask-install spectacle
 brew-cask-install iterm2
 brew-cask-install visual-studio-code
 brew-cask-install bitbar
+brew-cask-install jetbrains-toolbox
 
 # Remove outdated versions from the cellar.
 if [[ ${dry_run} == 1 ]]; then
