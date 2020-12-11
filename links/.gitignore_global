@@ -1,3 +1,6 @@
+# macos
+.DS_Store
+
 # IDE (we never want to commit those files)
 .idea
 *.iml
