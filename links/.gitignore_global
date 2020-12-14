@@ -8,3 +8,7 @@
 # packages
 node_modules
 .venv
+
+# python projects
+__pycache__
+.python-version
