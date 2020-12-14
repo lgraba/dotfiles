@@ -160,6 +160,9 @@ brew-install watch
 brew-install yank
 brew-install fx
 brew-install fzf
+brew-install zlib
+brew-install rsync
+brew-install htop
 
 # python 3 dev
 brew-install python
