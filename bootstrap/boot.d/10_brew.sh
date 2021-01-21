@@ -163,6 +163,7 @@ brew-install fzf
 brew-install zlib
 brew-install rsync
 brew-install htop
+brew-install highlight
 
 # python 3 dev
 brew-install python
