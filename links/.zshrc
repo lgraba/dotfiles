@@ -47,7 +47,7 @@ DISABLE_AUTO_TITLE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git autojump mvn osx web-search brew npm docker yarn node gulp heroku fzf-tab pip python)
+plugins=(git autojump osx web-search brew npm docker node heroku fzf-tab pip python rustup cargo)
 # fzf-tab for fzf completions...
 # zsh-completions for regular ones
 
@@ -74,3 +74,5 @@ source ~/.zshenv
 
 eval "$(rbenv init - --no-rehash zsh)"
 eval "$(ssh-agent)"
+
+autoload -U compinit && compinit
