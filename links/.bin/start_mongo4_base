@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+MONGODB_HOME=/opt/dev/db/nosql/mongodb-macos-x86_64-4.4.3
+
+mongod --config $MONGODB_HOME/etc/mongod.conf --dbpath $MONGODB_HOME/data/db --verbose --profile=2 --slowms=1 --setParameter failIndexKeyTooLong=false
