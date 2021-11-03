@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+for line in `cat $@`; do 
+	echo $line
+	export $line; 
+done
