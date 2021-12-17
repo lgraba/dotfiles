@@ -15,3 +15,5 @@ __pycache__
 
 # private env files
 *.private
+private
+
