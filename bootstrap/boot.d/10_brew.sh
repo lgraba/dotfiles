@@ -170,6 +170,9 @@ brew-install python
 brew-install pyenv
 brew-install pyenv-virtualenvwrapper
 
+# go
+brew-install go
+
 # ML
 brew-install octave
 
