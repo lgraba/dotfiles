@@ -29,8 +29,17 @@ else
 fi
 
 # get the list of installed formulaes and casks
-readarray -t installed_formulaes <<< "$(brew list)"
-readarray -t installed_casks <<< "$(brew list --cask)"
+installed_formulaes=()
+while IFS=\n read line
+do
+	installed_formulaes+=($line)
+done <<< "$(brew list)"
+
+installed_casks=()
+while IFS=\n read line
+do
+	installed_casks+=($line)
+done <<< "$(brew list --cask)"
 
 function containsElement() {
   local e match="$1"
