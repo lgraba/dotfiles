@@ -22,7 +22,11 @@ if [ ! -d "$boot_log_dir" ]; then
 	mkdir "$boot_log_dir"
 fi
 
-readarray -t boots_already_done <<< "$(find $boot_log_dir -type f -exec basename {} \;|perl -pe 's/(.*)\.\d{8}-\d{4}/\1/')"
+boots_already_done=()
+while IFS=\n read line
+do
+	boots_already_done+=($line)
+done <<< "$(find $boot_log_dir -type f -exec basename {} \;|perl -pe 's/(.*)\.\d{8}-\d{4}/\1/')"
 
 function containsElement() {
   local e match="$1"
