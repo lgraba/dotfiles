@@ -14,4 +14,3 @@ source ~/.aliases
 
 # reload the shell
 alias reload="exec ${SHELL} -l"
-source "$HOME/.cargo/env"
