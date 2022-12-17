@@ -65,7 +65,7 @@ export LANG=en_US.UTF-8
 export EDITOR='vim'
 
 # Compilation flags
-export ARCHFLAGS="-arch x86_64"
+export ARCHFLAGS="-arch arm64"
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
