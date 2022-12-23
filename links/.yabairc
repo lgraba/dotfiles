@@ -40,4 +40,8 @@ yabai -m config                                 \
 
 yabai -m rule --add app="^JetBrains Toolbox$" manage=off
 
+# make jetbrains products popup windows float
+yabai -m rule --add app="^GoLand$" manage=off
+yabai -m rule --add app="^GoLand$" title="( – )" space=7 manage=on
+
 echo "yabai configuration loaded.."
