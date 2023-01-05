@@ -44,4 +44,19 @@ yabai -m rule --add app="^JetBrains Toolbox$" manage=off
 yabai -m rule --add app="^GoLand$" manage=off
 yabai -m rule --add app="^GoLand$" title="( – )" space=7 manage=on
 
+yabai -m rule --add app="^PyCharm$" manage=off
+yabai -m rule --add app="^PyCharm$" title="( – )" space=7 manage=on
+
+yabai -m rule --add app="^DataGrip$" manage=off
+yabai -m rule --add app="^DataGrip$" title="( – )" space=7 manage=on
+
+yabai -m rule --add app="^WebStorm$" manage=off
+yabai -m rule --add app="^WebStorm$" title="( – )" space=7 manage=on
+
+
+
+# Ignore istat menu
+yabai -m rule --add app="^iStat" manage=off
+
+
 echo "yabai configuration loaded.."
