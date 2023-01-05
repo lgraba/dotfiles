@@ -7,8 +7,8 @@ ctrl + alt - home : yabai -m window --space prev; yabai -m space --focus prev
 ctrl + alt - end : yabai -m window --space next; yabai -m space --focus next
 
 # send window to monitor and follow focus
-ctrl + alt + cmd - left : yabai -m window --display prev; yabai -m display --focus prev
-ctrl + alt + cmd - right : yabai -m window --display next; yabai -m display --focus next
+ctrl + alt + cmd - left : yabai -m window --display next; yabai -m display --focus next
+ctrl + alt + cmd - right : yabai -m window --display prev; yabai -m display --focus prev
 
 # focus window in direction of focused window (options: north, east, south, west)
 ralt - left : yabai -m window --focus west
@@ -16,9 +16,20 @@ ralt - up : yabai -m window --focus north
 ralt - right : yabai -m window --focus east
 ralt - down : yabai -m window --focus south
 
+# flip windows vertically
+ralt - 0x2A : yabai -m space --mirror y-axis
+
+# Rotate the window tree clock-wise (options: 90, 180, 270 degree)
+ralt - 0x1B : yabai -m space --rotate 90
+
+# Balance out all windows both horizontally and vertically 
+#   to occupy the same space
+ralt - 0x18 : yabai -m space --balance
+
+
 # grow window shift + alt + cmd + arrows
-#alt + cmd - left : yabai -m window --resize left:-10:0
-#alt + cmd - right : yabai -m window --resize right:10:0
+shift + alt + cmd - left : yabai -m window --resize left:-10:0
+shift + alt + cmd - right : yabai -m window --resize right:10:0
 
 # increase window size
 #shift + alt - a : yabai -m window --resize left:-20:0
