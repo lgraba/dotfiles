@@ -54,9 +54,20 @@ yabai -m rule --add app="^WebStorm$" manage=off
 yabai -m rule --add app="^WebStorm$" title=".*–.*" manage=on
 
 
+# Open spotify in space 10
+yabai -m rule --add app="^Spotify$" space=10 manage=on
+# Open WhatsApp in space 10
+yabai -m rule --add app="^WhatsApp$" space=10 manage=on
+
+
 
 # Ignore istat menu
 yabai -m rule --add app="^iStat" manage=off
+
+# create a temp dir to store yabai windows state
+tempDir=/tmp/yabai-tiling-floating-toggle
+[ -d $tempDir ] && rm -rf $tempDir
+mkdir $tempDir
 
 
 echo "yabai configuration loaded.."

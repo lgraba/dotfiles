@@ -168,6 +168,7 @@ brew-install autojump
 brew-install watch
 brew-install yank
 brew-install fx
+brew-install jq
 brew-install fzf
 brew-install zlib
 brew-install rsync
