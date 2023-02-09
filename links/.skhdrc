@@ -28,8 +28,8 @@ ralt - 0x18 : yabai -m space --balance
 
 
 # grow window shift + alt + cmd + arrows
-shift + alt + cmd - left : yabai -m window --resize left:-10:0
-shift + alt + cmd - right : yabai -m window --resize right:10:0
+shift + alt + cmd - left : yabai -m window --resize left:-30:0
+shift + alt + cmd - right : yabai -m window --resize right:30:0
 
 # toggle/untoggle float
 ctrl + alt + cmd - t : ~/.bin/toggle-window-floating-tiling.sh
