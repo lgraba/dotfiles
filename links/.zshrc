@@ -51,6 +51,9 @@ plugins=(git autojump macos web-search brew npm docker node heroku fzf-tab pip p
 # fzf-tab for fzf completions...
 # zsh-completions for regular ones
 
+# custom completion
+fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
