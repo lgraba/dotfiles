@@ -1,6 +1,10 @@
 [user]
 	name = Augustin Peyrard
 	email = augustin.peyrard@gmail.com
+
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
+
 [color]
 	ui = true
 	status = auto
@@ -12,9 +16,11 @@
 	untracked = yellow
 
 [core]
+	pager = delta
 	editor = vim
 	autocrlf = input
 	excludesfile = ~/.gitignore_global
+
 [push]
 	default = simple
 
@@ -55,19 +61,42 @@
   rm-local-merged = "!git branch --merged | egrep -v '(master|develop|main)$' | xargs -t -I % git branch -d %"
 	rm-merged = "!main_branch=$(git remote show origin | sed -n '/HEAD branch/s/.*: //p') && git branch --merged | egrep -v '(master|develop|main)$' | xargs -t -I % git branch -d % && git checkout -q $main_branch && git for-each-ref refs/heads/ \"--format=%(refname:short)\" | while read branch; do mergeBase=$(git merge-base $main_branch $branch) && [[ $(git cherry $main_branch $(git commit-tree $(git rev-parse \"$branch^{tree}\") -p $mergeBase -m _)) == \"-\"* ]] && git branch -D $branch; done"
 
+	pr = "!f() { open "https://github.com/$(git remote -v|head -n 1|cut -d: -f2|gsed -r 's/(.*).git.*/\\1/')/pull/new/$(git rev-parse --abbrev-ref HEAD)"; };f"
+
+
 [pull]
 	rebase = merges
+
 [rerere]
 	enabled = 1
+
 [credential]
 	helper = store
-[pager]
-	diff = diff-so-fancy | less --tabs=1,5 -RFX
-	show = diff-so-fancy | less --tabs=1,5 -RFX
+
+#[pager]
+#	diff = diff-so-fancy | less --tabs=1,5 -RFX
+#	show = diff-so-fancy | less --tabs=1,5 -RFX
+
 [rebase]
 	autoStash = true
 	autosquash = true
+
 [fetch]
 	prune = true
+
 [init]
 	defaultBranch = main
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+		side-by-side = true
+    navigate = true    # use n and N to move between diff sections
+    light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+
+[merge]
+    conflictstyle = diff3
+
+[diff]
+    colorMoved = default
