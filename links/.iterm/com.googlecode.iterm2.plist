@@ -236,7 +236,7 @@
 	<key>HideScrollbar</key>
 	<true/>
 	<key>Hotkey</key>
-	<false/>
+	<true/>
 	<key>HotkeyChar</key>
 	<integer>90</integer>
 	<key>HotkeyCode</key>
@@ -522,7 +522,7 @@
 			<key>Guid</key>
 			<string>AD1A2690-EB7E-4185-B970-DB9920FB5557</string>
 			<key>Has Hotkey</key>
-			<true/>
+			<false/>
 			<key>Hide After Opening</key>
 			<false/>
 			<key>Horizontal Spacing</key>
