@@ -74,6 +74,7 @@ export ARCHFLAGS="-arch arm64"
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
 source ~/.zshenv
+source ~/.zshenv.private
 
 eval "$(ssh-agent)"
 
@@ -81,3 +82,6 @@ autoload -U compinit && compinit
 
 # Set PATH, MANPATH, etc., for Homebrew.
 eval "$(/opt/homebrew/bin/brew shellenv)"
+
+export HISTSIZE=999999999
+export SAVEHIST=$HISTSIZE
