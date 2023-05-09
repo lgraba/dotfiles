@@ -63,6 +63,9 @@
 
 	pr = "!f() { open "https://github.com/$(git remote -v|head -n 1|cut -d: -f2|gsed -r 's/(.*).git.*/\\1/')/pull/new/$(git rev-parse --abbrev-ref HEAD)"; };f"
 
+	ls-creation = "!f() { cd -- ${GIT_PREFIX:-.}; git ls-tree -r --name-only HEAD | while read filename; do echo "$(git log --reverse --date=iso --format=\"%ad | %h | %an |\" -- $filename | head -1) $filename"; done | sort; };f"
+
+	ls-modification = "!f() { cd -- ${GIT_PREFIX:-.}; git ls-tree -r --name-only HEAD | while read filename; do echo "$(git log -1 --date=iso --format=\"%ad | %h | %an |\" -- $filename) $filename"; done | sort; };f"
 
 [pull]
 	rebase = merges
