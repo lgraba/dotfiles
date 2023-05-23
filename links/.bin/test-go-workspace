@@ -1,0 +1,13 @@
+#! /usr/bin/env bash
+
+bold=$(tput bold)
+normal=$(tput sgr0)
+yellow=$(tput setaf 3)
+
+
+for dir in */; do
+	echo "🚀 ${bold}testing module: ${yellow}${dir%/}${normal}"
+	cd "${dir}" && gotestsum -- -v -race ./... -count 1
+	echo ""
+	cd ..
+done
