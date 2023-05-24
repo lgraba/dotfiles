@@ -3,11 +3,31 @@
 bold=$(tput bold)
 normal=$(tput sgr0)
 yellow=$(tput setaf 3)
+red=$(tput setaf 1)
+green=$(tput setaf 2)
 
+total_tests=0
+total_failures=0
+total_time=0
 
 for dir in */; do
 	echo "🚀 ${bold}testing module: ${yellow}${dir%/}${normal}"
-	cd "${dir}" && gotestsum -- -v -race ./... -count 1
+
+	output=$(cd "${dir}" && gotestsum -- -v -race ./... -count 1)
+	echo "$output"
+	
+	tests=$(ggrep -oP 'DONE \K\d+' <<< "$output")
+	failures=$(ggrep -oP '([0-9]+) failures' <<< "$output" | ggrep -oP '\d+')
+	time=$(perl -pe 's/.*DONE.*?([\d.]+)s$/$1/g' <<< "$output" | tail -n 1)
+	
+	total_tests=$((total_tests + tests))
+	total_failures=$((total_failures + failures))
+	total_time=$(bc -l <<< "$total_time + $time")
 	echo ""
-	cd ..
 done
+
+echo "${bold}${green}Total tests:    ${total_tests}${normal}"
+if [ "${total_failures}" -ne 0 ]; then
+	echo "${bold}${red}Total failures: ${total_failures}${normal}"
+fi
+echo "Total time:     ${yellow}${total_time}s${normal}"
