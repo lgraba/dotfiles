@@ -1,10 +1,22 @@
 #!/usr/bin/env bash
 
 current_dir=$(pwd)
+skip_repos=""
+for arg in "$@"; do
+	if [[ $arg == "--skip="* ]]; then
+		skip_repos=$(echo "$arg" | cut -d'=' -f2 | tr ',' '|')
+		shift
+	fi
+done
+
+
 for p in $(find . -name ".git" -type d -maxdepth 2 -exec dirname {} \;)
 do 
-  cd $p
-  echo "     -> $(pwd) -----------------------"
-  git $@
-  cd $current_dir
+	repo_name=$(basename "$p")
+	if [[ ! $skip_repos =~ (^|[|,])$repo_name($|[|,]) ]]; then
+		cd $p
+		echo "     -> $(pwd) -----------------------"
+		git $@
+		cd $current_dir
+	fi
 done
