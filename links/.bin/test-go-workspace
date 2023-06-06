@@ -10,7 +10,20 @@ total_tests=0
 total_failures=0
 total_time=0
 
+skip_repos=""
+for arg in "$@"; do
+	if [[ $arg == "--skip="* ]]; then
+		skip_repos=$(echo "$arg" | cut -d'=' -f2 | tr ',' '|')
+		shift
+	fi
+done
+
 for dir in */; do
+	repo_name=$(basename "$dir")
+	if [[ $skip_repos =~ (^|[|,])$repo_name($|[|,]) ]]; then
+		continue
+	fi	
+
 	echo "🚀 ${bold}testing module: ${yellow}${dir%/}${normal}"
 
 	output=$(cd "${dir}" && gotestsum -- -v -race ./... -count 1)
