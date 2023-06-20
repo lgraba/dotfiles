@@ -11,10 +11,13 @@ total_failures=0
 total_time=0
 
 skip_repos=""
+other_args=""
 for arg in "$@"; do
 	if [[ $arg == "--skip="* ]]; then
 		skip_repos=$(echo "$arg" | cut -d'=' -f2 | tr ',' '|')
 		shift
+	else
+		other_args+=" $arg"
 	fi
 done
 
@@ -26,7 +29,7 @@ for dir in */; do
 
 	echo "🚀 ${bold}testing module: ${yellow}${dir%/}${normal}"
 
-	output=$(cd "${dir}" && gotestsum -- -v -race ./... -count 1)
+	output=$(cd "${dir}" && gotestsum -- -v -race ${other_args} ./...)
 	echo "$output"
 	
 	tests=$(ggrep -oP 'DONE \K\d+' <<< "$output")
