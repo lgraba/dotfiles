@@ -69,5 +69,26 @@ tempDir=/tmp/yabai-tiling-floating-toggle
 [ -d $tempDir ] && rm -rf $tempDir
 mkdir $tempDir
 
+dumping_events=(
+	"window_created"
+	"window_destroyed"
+	"window_moved"
+	"window_resized"
+	"window_minimized"
+	"window_deminimized"
+)
+
+for dumping_event in "${dumping_events[@]}"; do
+	yabai -m signal --add event=${dumping_event} action="set SHELL=/bin/sh && window_reorg.sh dump"
+done
+
+transform_events=(
+	"display_added"
+	"display_removed"
+)
+
+for transform_event in "${transform_events[@]}"; do
+	yabai -m signal --add event=${transform_event} action="set SHELL=/bin/sh && sleep 5 && window_reorg.sh transform"
+done
 
 echo "yabai configuration loaded.."
