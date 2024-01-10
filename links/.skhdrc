@@ -34,6 +34,7 @@ shift + alt + cmd - right : yabai -m window --resize right:30:0
 # toggle/untoggle float
 ctrl + alt + cmd - t : ~/.bin/toggle-window-floating-tiling.sh
 
+cmd - m: yabai -m space --toggle mission-control && cliclick -r w:150 m:0,0 w:100 m:0,500
 
 # increase window size
 #shift + alt - a : yabai -m window --resize left:-20:0

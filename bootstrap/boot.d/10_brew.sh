@@ -218,6 +218,7 @@ brew-cask-install qlstephen
 
 # tmux
 brew-install tmux
+brew-install cliclick
 
 # zsh
 brew-install zsh
