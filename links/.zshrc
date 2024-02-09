@@ -47,7 +47,7 @@ DISABLE_AUTO_TITLE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git autojump macos web-search brew npm docker node heroku fzf-tab pip python rust)
+plugins=(git autojump macos web-search brew npm docker docker-compose node fzf-tab pip python rust)
 # fzf-tab for fzf completions...
 # zsh-completions for regular ones
 
