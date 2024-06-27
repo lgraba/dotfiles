@@ -47,7 +47,7 @@ DISABLE_AUTO_TITLE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(gitfast autojump macos web-search brew npm docker docker-completion node fzf-tab pip python rust)
+plugins=(gitfast autojump macos web-search brew npm docker node fzf-tab pip python rust)
 # fzf-tab for fzf completions...
 # zsh-completions for regular ones
 
@@ -73,15 +73,17 @@ export ARCHFLAGS="-arch arm64"
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
+autoload -Uz compinit && compinit
+
 source ~/.zshenv
-source ~/.zshenv.private
+if test -f ~/.zshenv.private; then
+	source ~/.zshenv.private
+fi
 
 eval "$(ssh-agent)"
 
-autoload -U compinit && compinit
-
 # Set PATH, MANPATH, etc., for Homebrew.
-eval "$(/opt/homebrew/bin/brew shellenv)"
+eval "$(brew shellenv)"
 
 export HISTSIZE=999999999
 export SAVEHIST=$HISTSIZE

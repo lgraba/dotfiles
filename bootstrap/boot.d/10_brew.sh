@@ -225,6 +225,10 @@ brew-install zsh
 brew-install rbenv
 brew-install zsh-syntax-highlighting
 
+# docker
+brew-install docker
+
+
 # some macos apps
 brew-cask-install alfred
 brew-cask-install hammerspoon
