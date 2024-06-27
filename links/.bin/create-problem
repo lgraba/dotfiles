@@ -1,0 +1,49 @@
+#!/bin/bash
+
+# Get the problem path from the first argument
+PROBLEM_PATH=$1
+
+# Extract the directory path and problem name
+PROBLEM_DIR=$(dirname "$PROBLEM_PATH")
+PROBLEM_NAME=$(basename "$PROBLEM_PATH")
+
+# Define the directory for the source and test files
+SRC_DIR="src/$PROBLEM_DIR"
+TESTS_DIR="tests/$PROBLEM_DIR"
+
+# Create directories if they don't exist
+mkdir -p "$SRC_DIR"
+mkdir -p "$TESTS_DIR"
+
+# Define file paths
+SRC_FILE="$SRC_DIR/$PROBLEM_NAME.py"
+TEST_FILE="$TESTS_DIR/test_$PROBLEM_NAME.py"
+
+# Create the source file if it does not exist
+if [ ! -f "$SRC_FILE" ]; then
+    cat > "$SRC_FILE" <<EOF
+def $PROBLEM_NAME():
+    pass
+
+if __name__ == "__main__":
+    # Example usage
+    print($PROBLEM_NAME())
+EOF
+    echo "Created $SRC_FILE"
+else
+    echo "$SRC_FILE already exists"
+fi
+
+# Create the test file if it does not exist
+if [ ! -f "$TEST_FILE" ]; then
+    cat > "$TEST_FILE" <<EOF
+
+class Test${PROBLEM_NAME}:
+    def test_$PROBLEM_NAME(self):
+        self.assertEqual($PROBLEM_NAME(), None)  # Adjust expected value
+
+EOF
+    echo "Created $TEST_FILE"
+else
+    echo "$TEST_FILE already exists"
+fi
