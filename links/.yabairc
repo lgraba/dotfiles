@@ -39,6 +39,7 @@ yabai -m config                                 \
     mouse_drop_action            swap
 
 yabai -m rule --add app="^JetBrains Toolbox$" manage=off
+yabai -m rule --add app="iTerm" manage=off
 
 # make jetbrains products popup windows float
 yabai -m rule --add app="^GoLand$" manage=off
