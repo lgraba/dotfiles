@@ -57,7 +57,7 @@ restore_window_positions() {
 if [ "$1" = "dump" ]; then
   save_window_positions
 elif [ "$1" = "restore" ]; then
-  restore_window_positions $display_count
-elif [ "$1" = "transform" ]; then
   restore_window_positions $2
+elif [ "$1" = "transform" ]; then
+  restore_window_positions $display_count
 fi
