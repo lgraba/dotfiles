@@ -3,53 +3,52 @@
 # Get the total number of displays connected
 display_count=$(yabai -m query --displays | jq length)
 
-echo "number of displays found: ${display_count}"
+echo -e "\n============== Executing on $(date) (w/ ${display_count} displays) ==============="
 
 save_window_positions() {
+  # Phase 1: Read positions from yabai
   yabai -m query --windows |
-    jq '[.[] | {window: .id, app: .app, title: .title, space: .space, display: .display, position: {x: .frame.x, y: .frame.y}}]' > /tmp/window_positions-${display_count}.json
-}
+    jq '[.[] | {window: .id, app: .app, title: .title, space: .space, display: .display, position: {x: .frame.x, y: .frame.y}}]' > /tmp/window_positions_raw.json
 
-move_windows() {
-	origin_space=$1
-	dest_space=$2
+  # Phase 2: Perform the translation if on 1 display
+  if [ "$display_count" -eq 1 ]; then
+    jq '[.[] | {
+      window: .window,
+      app: .app,
+      title: .title,
+      space: (if .space == 2 then 11 elif .space == 3 then 12 else .space end),
+      display: .display,
+      position: .position
+    }]' /tmp/window_positions_raw.json > /tmp/window_positions.json
+  else
+    # If 3 displays, no translation needed, just copy the raw data
+    cp /tmp/window_positions_raw.json /tmp/window_positions.json
+  fi
 
-	yabai -m query --windows --space "$origin_space" |
-    jq '[.[] | {window: ., position: (.frame.x + .frame.y)}] | sort_by(.position) | .[].window.id' |
-		xargs -I {} yabai -m window {} --space "$dest_space"
-
-#	yabai -m query --windows --space "$origin_space" |
-#		jq -r '.[] | "yabai -m window " + (.id | tostring) + " --space '"$dest_space"'"' |
-#		sh
+  echo "Window positions saved for ${display_count} displays."
 }
 
 restore_window_positions() {
-  positions_file="/tmp/window_positions-${1}.json"
+  display_count=$1
+  positions_file="/tmp/window_positions.json"
+  echo "Restoring window positions..."
+  
   if [ -f "$positions_file" ]; then
-    jq -r '.[] | "\(.window) \(.space)"' "$positions_file" | while read -r window_id space_id; do
+    jq -r '.[] | "\(.window) \(.space) \(.app)"' "$positions_file" | while read -r window_id space_id app_name; do
       final_space_id=$space_id
-      if [ "$1" -eq 3 ]; then
+
+      # Translate spaces based on the display count
+      if [ "$display_count" -eq 1 ]; then
         case "$space_id" in
-          11)
-            final_space_id=2
-            ;;
-          12)
-            final_space_id=3
-            ;;
-        esac
-      elif [ "$1" -eq 1 ]; then
-        case "$space_id" in
-          2)
-            final_space_id=11
-            ;;
-          3)
-            final_space_id=12
-            ;;
+          11) final_space_id=2 ;;
+          12) final_space_id=3 ;;
         esac
       fi
+
+      echo "Restoring window ${app_name} to space ${final_space_id} (window #${window_id})"
       yabai -m window "$window_id" --space "$final_space_id"
     done
-    echo "Window spaces restored."
+    echo "Window positions restored."
   else
     echo "No window positions file found."
   fi
@@ -58,23 +57,7 @@ restore_window_positions() {
 if [ "$1" = "dump" ]; then
   save_window_positions
 elif [ "$1" = "restore" ]; then
-  restore_window_positions ${display_count}
-elif [ "$1" = "adapt" ]; then
-	from=$2
-	to=$3
-	if [[ -z $from ]] || [[ -z $to ]]; then
-		echo "usage $0 adapt <from> <to>"
-		exit -1
-	fi
-  restore_window_positions $from
+  restore_window_positions $display_count
 elif [ "$1" = "transform" ]; then
-  case "$display_count" in
-    1)
-      to=3
-      ;;
-    3)
-      to=1
-      ;;
-  esac
-  restore_window_positions $to
-fi 
+  restore_window_positions $2
+fi

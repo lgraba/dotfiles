@@ -80,7 +80,7 @@ dumping_events=(
 )
 
 for dumping_event in "${dumping_events[@]}"; do
-	yabai -m signal --add event=${dumping_event} action="window_reorg.sh dump"
+	yabai -m signal --add event=${dumping_event} action="window_reorg.sh dump | tee -a /private/tmp/window_reorg.log"
 done
 
 transform_events=(
@@ -89,7 +89,7 @@ transform_events=(
 )
 
 for transform_event in "${transform_events[@]}"; do
-	yabai -m signal --add event=${transform_event} action="sleep 5 && window_reorg.sh transform"
+	yabai -m signal --add event=${transform_event} action="sleep 5 && window_reorg.sh transform | tee -a /private/tmp/window_reorg.log"
 done
 
 echo "yabai configuration loaded.."
