@@ -83,7 +83,7 @@ fi
 eval "$(ssh-agent)"
 
 # Set PATH, MANPATH, etc., for Homebrew.
-eval "$(brew shellenv)"
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 export HISTSIZE=999999999
 export SAVEHIST=$HISTSIZE
