@@ -30,6 +30,7 @@ save_window_positions() {
 
 restore_window_positions() {
   display_count=$1
+	force=$2
   positions_file="/tmp/window_positions.json"
   echo "Restoring window positions..."
   
@@ -42,6 +43,11 @@ restore_window_positions() {
         case "$space_id" in
           11) final_space_id=2 ;;
           12) final_space_id=3 ;;
+        esac
+      elif [ "$display_count" -eq 3 ] && [ "$force" = "true" ]; then
+        case "$space_id" in
+          2) final_space_id=11 ;;
+          3) final_space_id=12 ;;
         esac
       fi
 
@@ -60,4 +66,6 @@ elif [ "$1" = "restore" ]; then
   restore_window_positions $2
 elif [ "$1" = "transform" ]; then
   restore_window_positions $display_count
+elif [ "$1" = "fix" ]; then
+  restore_window_positions 3 true
 fi

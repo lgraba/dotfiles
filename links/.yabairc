@@ -79,8 +79,12 @@ dumping_events=(
 	"window_deminimized"
 )
 
+# dump the new window organization, but delay the dump.
+# because when we are getting out of sleep, the windows are set on first screen, and if 
+# we store directly the "transform" bellow will use the newly saved dump and not adapt to 3 screens windows.
+# so let's just delay to do the dump after the transform.
 for dumping_event in "${dumping_events[@]}"; do
-	yabai -m signal --add event=${dumping_event} action="window_reorg.sh dump | tee -a /private/tmp/window_reorg.log"
+	yabai -m signal --add event=${dumping_event} action="sleep 10 && window_reorg.sh dump | tee -a /private/tmp/window_reorg.log"
 done
 
 transform_events=(
