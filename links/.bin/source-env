@@ -1,6 +1,13 @@
 #!/usr/bin/env bash
 
-for line in `cat $@`; do 
-	echo $line
-	export $line; 
-done
+silent=false
+if [[ "$1" == "-s" || "$1" == "--silent" ]]; then
+		silent=true
+		shift
+fi
+
+while IFS= read -r line; do
+		[[ -z "$line" || "$line" =~ ^# ]] && continue
+		$silent || echo "$line"
+		export "$line"
+done < <(cat "$@" && echo)
