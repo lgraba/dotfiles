@@ -1,13 +1,19 @@
 #!/usr/bin/env bash
 
 silent=false
-if [[ "$1" == "-s" || "$1" == "--silent" ]]; then
-		silent=true
-		shift
-fi
+files=()
+for arg in "$@"; do
+    if [[ "$arg" == "-s" || "$arg" == "--silent" ]]; then
+        silent=true
+    else
+        files+=("$arg")
+    fi
+done
 
-while IFS= read -r line; do
-		[[ -z "$line" || "$line" =~ ^# ]] && continue
-		$silent || echo "$line"
-		export "$line"
-done < <(cat "$@" && echo)
+for file in "${files[@]}"; do
+	while IFS= read -r line; do
+			[[ -z "$line" || "$line" =~ ^# ]] && continue
+			$silent || echo "$line"
+			export "$line"
+	done < <(cat "$file" && echo)
+done
