@@ -54,6 +54,9 @@ yabai -m rule --add app="^DataGrip$" title=".*\[.*\].*" manage=on
 yabai -m rule --add app="^WebStorm$" manage=off
 yabai -m rule --add app="^WebStorm$" title=".*–.*" manage=on
 
+yabai -m rule --add app="^RustRover$" manage=off
+yabai -m rule --add app="^RustRover$" title=".*–.*" manage=on
+
 
 # Open spotify in space 10
 yabai -m rule --add app="^Spotify$" space=10 manage=on
