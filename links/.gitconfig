@@ -1,6 +1,6 @@
 [user]
-	name = Augustin Peyrard
-	email = augustin.peyrard@gmail.com
+	name = Logan Graba
+	email = lgraba@gmail.com
 
 [url "ssh://git@github.com/"]
 	insteadOf = https://github.com/
@@ -96,7 +96,7 @@
     diffFilter = delta --color-only
 
 [delta]
-		side-by-side = true
+	side-by-side = true
     navigate = true    # use n and N to move between diff sections
     light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
 

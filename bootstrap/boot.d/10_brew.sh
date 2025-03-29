@@ -187,31 +187,28 @@ brew-install go
 brew-install octave
 
 # java & friends
-brew-cask-install java
-brew-install kotlin
-brew-install scala
-brew-install sbt
-brew-install clojure
-brew-install leiningen
-brew-install gradle
-brew-install gradle-completion
-
-# other dev languages
-brew-install ocaml
+# brew-cask-install java
+# brew-install kotlin
+# brew-install scala
+# brew-install sbt
+# brew-install clojure
+# brew-install leiningen
+# brew-install gradle
+# brew-install gradle-completion
 
 # js dev
-brew-install node
+brew-install nvm
 
 # middlewares
-brew-install apache-spark
-brew-install kafka
+# brew-install apache-spark
+# brew-install kafka
 
 # mongo
-brew tap mongodb/brew
-brew-install mongodb/brew/mongodb-community@3.6
-brew-cask-install robo-3t
+# brew tap mongodb/brew
+# brew-install mongodb/brew/mongodb-community@3.6
+# brew-cask-install robo-3t
 
-brew-install postgresql
+# brew-install postgresql
 
 # tune macos "quick look" to handle more files
 brew-cask-install qlstephen
@@ -228,12 +225,11 @@ brew-install zsh-syntax-highlighting
 # docker
 brew-install docker
 
-
-# some macos apps
+# macos apps
 brew-cask-install alfred
-brew-cask-install hammerspoon
 brew-cask-install yakyak
 brew-cask-install firefox
+brew-cask-install google-chrome
 brew-cask-install homebrew/cask-versions/firefox-developer-edition
 brew-cask-install evernote
 brew-cask-install spectacle
