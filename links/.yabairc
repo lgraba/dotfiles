@@ -27,11 +27,11 @@ yabai -m config                                 \
     split_ratio                  0.50           \
     split_type                   auto           \
     auto_balance                 off            \
-    top_padding                  06             \
-    bottom_padding               06             \
-    left_padding                 06             \
-    right_padding                06             \
-    window_gap                   06             \
+    top_padding                  05             \
+    bottom_padding               05             \
+    left_padding                 05             \
+    right_padding                05             \
+    window_gap                   05             \
     layout                       bsp            \
     mouse_modifier               fn             \
     mouse_action1                move           \
@@ -42,20 +42,20 @@ yabai -m rule --add app="^JetBrains Toolbox$" manage=off
 yabai -m rule --add app="iTerm" manage=off
 
 # make jetbrains products popup windows float
-yabai -m rule --add app="^GoLand$" manage=off
-yabai -m rule --add app="^GoLand$" title=".*–.*" manage=on
+# yabai -m rule --add app="^GoLand$" manage=off
+# yabai -m rule --add app="^GoLand$" title=".*–.*" manage=on
 
-yabai -m rule --add app="^PyCharm$" manage=off
-yabai -m rule --add app="^PyCharm$" title=".*–.*" manage=on
+# yabai -m rule --add app="^PyCharm$" manage=off
+# yabai -m rule --add app="^PyCharm$" title=".*–.*" manage=on
 
-yabai -m rule --add app="^DataGrip$" manage=off
-yabai -m rule --add app="^DataGrip$" title=".*\[.*\].*" manage=on
+# yabai -m rule --add app="^DataGrip$" manage=off
+# yabai -m rule --add app="^DataGrip$" title=".*\[.*\].*" manage=on
 
-yabai -m rule --add app="^WebStorm$" manage=off
-yabai -m rule --add app="^WebStorm$" title=".*–.*" manage=on
+# yabai -m rule --add app="^WebStorm$" manage=off
+# yabai -m rule --add app="^WebStorm$" title=".*–.*" manage=on
 
-yabai -m rule --add app="^RustRover$" manage=off
-yabai -m rule --add app="^RustRover$" title=".*–.*" manage=on
+# yabai -m rule --add app="^RustRover$" manage=off
+# yabai -m rule --add app="^RustRover$" title=".*–.*" manage=on
 
 
 # Open spotify in space 10

@@ -1,6 +1,6 @@
 # go to prev/next space
-ctrl - right : yabai -m space --focus prev
-ctrl - left : yabai -m space --focus next
+ctrl - left : yabai -m space --focus prev
+ctrl - right : yabai -m space --focus next
 
 # move window to prev/next space
 ctrl + alt - left : yabai -m window --space prev; yabai -m space --focus prev
@@ -12,16 +12,16 @@ ralt - up : yabai -m window --focus north
 ralt - right : yabai -m window --focus east
 ralt - down : yabai -m window --focus south
 
-# flip windows vertically
-ralt - 0x2A : yabai -m space --mirror y-axis
+# flip windows horizontally
+# ralt - 0x2A : yabai -m space --mirror x-axis
 
 # Rotate the window tree clock-wise (options: 90, 180, 270 degree)
-ralt - 0x1B : yabai -m space --rotate 90
+ctrl + alt + cmd - pageup : yabai -m space --rotate 90
+ctrl + alt + cmd - pagedown : yabai -m space --rotate 180
 
 # Balance out all windows both horizontally and vertically 
 #   to occupy the same space
-ralt - 0x18 : yabai -m space --balance
-
+ctrl + alt + cmd - b : yabai -m space --balance
 
 # grow window shift + alt + cmd + arrows
 shift + alt + cmd - left : yabai -m window --resize left:-30:0
@@ -29,5 +29,14 @@ shift + alt + cmd - right : yabai -m window --resize right:30:0
 
 # toggle/untoggle float
 ctrl + alt + cmd - t : ~/.bin/toggle-window-floating-tiling.sh
+
+# create desktop, move window and follow focus - uses jq for parsing json (brew install jq)
+shift + cmd - n : yabai -m space --create && \
+                   index="$(yabai -m query --spaces --display | jq 'map(select(."is-native-fullscreen" == false))[-1].index')" && \
+                   yabai -m window --space "${index}" && \
+                   yabai -m space --focus "${index}"
+
+# toggle window split type (horizontal vs. vertical)
+alt - e : yabai -m window --toggle split
 
 # cmd - m: yabai -m space --toggle mission-control && cliclick -r w:150 m:0,0 w:100 m:0,500
