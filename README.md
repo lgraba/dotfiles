@@ -1,20 +1,15 @@
-~/.dotfiles
------------
+# Dotfiles
 
-== Installation steps
+## Installation
 
-- install ssh keys into home directory
-- launch 
+1. Create ssh keys in home directory (~/.ssh/)
+2. Launch installation script:
 ```sh
 ./install.sh
 ```
 
-== Misc
+## Dry-Run
 
-To run in dry mode:
 ```sh
 ./install.sh --dry-run
 ```
-
-
-

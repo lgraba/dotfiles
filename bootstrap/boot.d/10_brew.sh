@@ -150,6 +150,7 @@ brew-install ack
 brew-install git
 brew-install git-lfs
 brew-install diff-so-fancy
+brew-install git-delta
 #brew-install imagemagick --with-webp
 #brew-install lua
 #brew-install lynx
@@ -177,6 +178,7 @@ brew-install highlight
 
 # python 3 dev
 brew-install python
+brew-install pipx
 brew-install pyenv
 brew-install pyenv-virtualenvwrapper
 
@@ -187,31 +189,28 @@ brew-install go
 brew-install octave
 
 # java & friends
-brew-cask-install java
-brew-install kotlin
-brew-install scala
-brew-install sbt
-brew-install clojure
-brew-install leiningen
-brew-install gradle
-brew-install gradle-completion
-
-# other dev languages
-brew-install ocaml
+# brew-cask-install java
+# brew-install kotlin
+# brew-install scala
+# brew-install sbt
+# brew-install clojure
+# brew-install leiningen
+# brew-install gradle
+# brew-install gradle-completion
 
 # js dev
-brew-install node
+brew-install nvm
 
 # middlewares
-brew-install apache-spark
-brew-install kafka
+# brew-install apache-spark
+# brew-install kafka
 
 # mongo
-brew tap mongodb/brew
-brew-install mongodb/brew/mongodb-community@3.6
-brew-cask-install robo-3t
+# brew tap mongodb/brew
+# brew-install mongodb/brew/mongodb-community@3.6
+# brew-cask-install robo-3t
 
-brew-install postgresql
+# brew-install postgresql
 
 # tune macos "quick look" to handle more files
 brew-cask-install qlstephen
@@ -228,20 +227,25 @@ brew-install zsh-syntax-highlighting
 # docker
 brew-install docker
 
+# skhd (hotkey daemon)
+brew-install koekeishiya/formulae/skhd
 
-# some macos apps
-brew-cask-install alfred
-brew-cask-install hammerspoon
-brew-cask-install yakyak
+# yabai (window manager)
+brew-install koekeishiya/formulae/yabai
+
+# macos apps
+# brew-cask-install alfred
+# brew-cask-install yakyak
 brew-cask-install firefox
+brew-cask-install google-chrome
 brew-cask-install homebrew/cask-versions/firefox-developer-edition
-brew-cask-install evernote
-brew-cask-install spectacle
 brew-cask-install iterm2
+brew-cask-install ghostty
 brew-cask-install visual-studio-code
-brew-cask-install bitbar
 brew-cask-install jetbrains-toolbox
-brew-cask-install bartender # remove space from menu bar
+brew-cask-install visual-studio-code
+brew-cask-install bartender
+brew-cask-install betterdisplay
 
 # Remove outdated versions from the cellar.
 if [[ ${dry_run} == 1 ]]; then
