@@ -234,18 +234,16 @@ brew-install koekeishiya/formulae/skhd
 brew-install koekeishiya/formulae/yabai
 
 # macos apps
-brew-cask-install alfred
-brew-cask-install yakyak
+# brew-cask-install alfred
+# brew-cask-install yakyak
 brew-cask-install firefox
 brew-cask-install google-chrome
 brew-cask-install homebrew/cask-versions/firefox-developer-edition
-brew-cask-install evernote
-brew-cask-install spectacle
 brew-cask-install iterm2
 brew-cask-install ghostty
 brew-cask-install visual-studio-code
-brew-cask-install bitbar
 brew-cask-install jetbrains-toolbox
+brew-cask-install visual-studio-code
 brew-cask-install bartender
 brew-cask-install betterdisplay
 
